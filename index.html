@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>نسخه بهتر – لیلا منفرد</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --primary: #1423C9;
@@ -12,7 +12,11 @@
       --bg: #f9fafc;
       --text: #222;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Vazirmatn', sans-serif;
       background: var(--bg);
@@ -20,10 +24,9 @@
       line-height: 1.8;
       scroll-behavior: smooth;
     }
-
     header {
       background: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
       padding: 15px 20px;
       display: flex;
       align-items: center;
@@ -32,7 +35,6 @@
       top: 0;
       z-index: 1000;
     }
-
     .logo {
       font-size: 1.4rem;
       font-weight: 800;
@@ -40,7 +42,6 @@
       display: flex;
       align-items: center;
     }
-
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -53,13 +54,11 @@
       background: var(--primary);
       border-radius: 2px;
     }
-
     nav ul {
       list-style: none;
       display: flex;
       gap: 20px;
     }
-
     nav a {
       text-decoration: none;
       color: var(--text);
@@ -74,10 +73,11 @@
       width: 0;
       height: 2px;
       background: var(--accent);
-      transition: width .3s;
+      transition: width 0.3s;
     }
-    nav a:hover::after { width: 100%; }
-
+    nav a:hover::after {
+      width: 100%;
+    }
     .btn-login {
       background: var(--accent);
       color: var(--primary);
@@ -85,9 +85,8 @@
       border-radius: 30px;
       font-weight: 600;
       text-decoration: none;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
-
     .banner {
       background: linear-gradient(135deg, var(--primary) 0%, #3B272B 100%);
       color: white;
@@ -96,64 +95,53 @@
       padding: 60px 20px;
       text-align: center;
     }
-
     .banner h1 {
       font-size: 2rem;
       font-weight: 800;
       margin-bottom: 10px;
     }
-
     .banner p {
       font-size: 1.2rem;
       opacity: 0.95;
     }
-
     .features {
       padding: 40px 20px;
       text-align: center;
     }
-
     .cards {
       display: grid;
       gap: 20px;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
-
     .card {
       background: white;
-      border: 1px solid rgba(0,0,0,0.1);
+      border: 1px solid rgba(0, 0, 0, 0.1);
       border-radius: 40px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
       overflow: hidden;
       transition: transform 0.3s ease;
     }
-
     .card:hover {
       transform: translateY(-5px);
     }
-
     .card img {
       width: 100%;
-      height: 140px;
+      height: 100px;
       object-fit: cover;
     }
-
     .card .info {
       padding: 15px;
     }
-
     .card .title {
       font-weight: 700;
       margin-bottom: 8px;
       font-size: 1rem;
     }
-
     .card .price {
       color: var(--accent);
       font-weight: 600;
       margin-bottom: 12px;
     }
-
     .card button {
       background: var(--primary);
       color: white;
@@ -163,177 +151,289 @@
       cursor: pointer;
       font-weight: bold;
     }
-
     .faq {
       background: #eef2ff;
       padding: 50px 20px;
     }
-
     .faq h2 {
       font-size: 1.6rem;
       color: var(--primary);
       margin-bottom: 20px;
     }
-
     .faq-item {
       background: white;
-      border: 1px solid rgba(0,0,0,0.08);
+      border: 1px solid rgba(0, 0, 0, 0.08);
       border-radius: 30px 60px 30px 60px;
       padding: 20px;
       margin-bottom: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     }
-
     .faq-item h3 {
       font-size: 1.1rem;
       color: var(--primary);
     }
-
     footer {
       background: var(--primary);
       color: white;
       text-align: center;
       padding: 30px 20px;
     }
-
-    footer p { margin-bottom: 5px; }
-
-    /* موبایل */
-    @media(max-width: 768px) {
+    footer p {
+      margin-bottom: 5px;
+    }
+    @media (max-width: 768px) {
       .menu-toggle {
         display: flex;
       }
-
       nav ul {
         display: none;
         position: fixed;
         top: 60px;
         right: 0;
         width: 260px;
-        height: calc(100% - 60px);
         background: white;
         flex-direction: column;
         padding: 30px 20px;
-        box-shadow: -4px 0 10px rgba(0,0,0,0.1);
-        border-top-left-radius: 15px;
-        border-bottom-left-radius: 15px;
-        transition: transform 0.3s ease;
+        box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 15px 0 0 15px;
         transform: translateX(100%);
         z-index: 999;
       }
-
       nav ul.show {
         display: flex;
         transform: translateX(0%);
       }
+    }
 
-      nav ul li {
-        margin-bottom: 15px;
+    /* مودال */
+    #confirmModal {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(20, 35, 201, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 2000;
+    }
+    #confirmModal.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    #confirmModal .modal-content {
+      background: white;
+      border-radius: 25px;
+      padding: 25px 35px;
+      max-width: 350px;
+      width: 90%;
+      box-shadow: 0 10px 30px rgba(20, 35, 201, 0.3);
+      text-align: center;
+      font-family: 'Vazirmatn', sans-serif;
+      animation: fadeInUp 0.4s ease forwards;
+    }
+    #confirmModal .modal-content h3 {
+      margin-bottom: 20px;
+      font-weight: 800;
+      color: var(--primary);
+      font-size: 1.3rem;
+    }
+    #confirmModal .modal-content p {
+      font-size: 1rem;
+      margin-bottom: 30px;
+      color: #444;
+    }
+    #confirmModal .modal-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    #confirmModal .modal-buttons button {
+      flex: 1;
+      padding: 10px 0;
+      border: none;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.25s ease;
+      user-select: none;
+    }
+    #confirmModal .modal-buttons .btn-confirm {
+      background: var(--primary);
+      color: white;
+    }
+    #confirmModal .modal-buttons .btn-confirm:hover {
+      background: #0f1a7a;
+    }
+    #confirmModal .modal-buttons .btn-cancel {
+      background: #eee;
+      color: var(--primary);
+    }
+    #confirmModal .modal-buttons .btn-cancel:hover {
+      background: #ddd;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
-
-      nav ul li a {
-        font-size: 1.1rem;
-        font-weight: bold;
-        color: var(--primary);
-      }
-
-      .close-menu {
-        font-size: 1.4rem;
-        font-weight: bold;
-        color: var(--primary);
-        align-self: flex-end;
-        margin-bottom: 20px;
-        cursor: pointer;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   </style>
 </head>
 <body>
-
-<header>
-  <div class="logo">
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
+  <header>
+    <div class="logo">
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+      <span style="margin-right: 10px;">نسخه بهتر</span>
     </div>
-    <span style="margin-right: 10px;">نسخه بهتر</span>
-  </div>
-  <nav>
-    <ul>
-      <li class="close-menu" onclick="toggleMenu()">✕</li>
-      <li><a href="#">خانه</a></li>
-      <li><a href="#">خدمات</a></li>
-      <li><a href="#">مقالات</a></li>
-      <li><a href="#faq">سوالات متداول</a></li>
-      <li><a href="#">تماس با ما</a></li>
-    </ul>
-  </nav>
-  <a href="#" class="btn-login">ورود / ثبت‌نام</a>
-</header>
+    <nav>
+      <ul>
+        <li class="close-menu" onclick="toggleMenu()">✕</li>
+        <li><a href="#">خانه</a></li>
+        <li><a href="#">خدمات</a></li>
+        <li><a href="#">مقالات</a></li>
+        <li><a href="#faq">سوالات متداول</a></li>
+        <li><a href="#">تماس با ما</a></li>
+      </ul>
+    </nav>
+    <a href="#" class="btn-login">ورود / ثبت‌نام</a>
+  </header>
 
-<section class="banner">
-  <h1>A Professional Consultant For Your Success</h1>
-  <p>با مدیریت خانم لیلا منفرد</p>
-</section>
+  <section class="banner">
+    <h1>A Professional Consultant For Your Success</h1>
+    <p>با مدیریت خانم لیلا منفرد</p>
+  </section>
 
-<section class="features">
-  <div class="cards">
-    <div class="card">
-      <img src="Baner.png" alt="مشاوره شخصی">
-      <div class="info">
-        <p class="title">مشاوره فردی و شخصی‌سازی‌شده</p>
-        <p class="price">با برنامه دقیق</p>
-        <button>اطلاعات بیشتر</button>
+  <section class="features">
+    <div class="cards">
+      <div class="card">
+        <img src="photo18921464544.jpg" alt="مشاوره شخصی" />
+        <div class="info">
+          <p class="title">مشاوره فردی و شخصی‌سازی‌شده</p>
+          <p class="price">با برنامه دقیق</p>
+          <button onclick="requestPlaySound()">اطلاعات بیشتر</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="photo18921464544.jpg" alt="دوره آموزشی" />
+        <div class="info">
+          <p class="title">برگزاری دوره‌های کاربردی</p>
+          <p class="price">آنلاین و حضوری</p>
+          <button onclick="requestPlaySound()">شروع یادگیری</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="photo18921464544.jpg" alt="پشتیبانی" />
+        <div class="info">
+          <p class="title">پشتیبانی دائمی</p>
+          <p class="price">تا رسیدن به هدف</p>
+          <button onclick="requestPlaySound()">در تماس باشید</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="photo18921464544.jpg" alt="تحلیل روان‌شناسی" />
+        <div class="info">
+          <p class="title">تحلیل شخصیت شما</p>
+          <p class="price">کاملاً تخصصی</p>
+          <button onclick="requestPlaySound()">شروع تحلیل</button>
+        </div>
       </div>
     </div>
-    <div class="card">
-      <img src="Baner.png" alt="دوره آموزشی">
-      <div class="info">
-        <p class="title">برگزاری دوره‌های کاربردی</p>
-        <p class="price">آنلاین و حضوری</p>
-        <button>شروع یادگیری</button>
-      </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <h2>سوالات متداول</h2>
+    <div class="faq-item">
+      <h3>چطور وقت مشاوره بگیرم؟</h3>
+      <p>از طریق تماس یا واتساپ در پایین سایت.</p>
     </div>
-    <div class="card">
-      <img src="Baner.png" alt="پشتیبانی">
-      <div class="info">
-        <p class="title">پشتیبانی دائمی</p>
-        <p class="price">تا رسیدن به هدف</p>
-        <button>در تماس باشید</button>
-      </div>
+    <div class="faq-item">
+      <h3>مشاوره به چه شکل برگزار می‌شود؟</h3>
+      <p>به صورت حضوری یا آنلاین بر اساس انتخاب شما.</p>
     </div>
-    <div class="card">
-      <img src="Baner.png" alt="تحلیل روان‌شناسی">
-      <div class="info">
-        <p class="title">تحلیل شخصیت شما</p>
-        <p class="price">کاملاً تخصصی</p>
-        <button>شروع تحلیل</button>
+  </section>
+
+  <footer>
+    <p>تماس: 0936‑276‑5573 | ایمیل: info@betterversion.ir</p>
+    <p>© ۱۴۰۴ نسخه بهتر – تمامی حقوق محفوظ است</p>
+  </footer>
+
+  <!-- مودال تایید -->
+  <div id="confirmModal">
+    <div class="modal-content">
+      <h3>موزیک در حال پخش است</h3>
+      <p>آیا می‌خواهید موزیک قبلی متوقف شود و موزیک جدید پخش شود؟</p>
+      <div class="modal-buttons">
+        <button class="btn-confirm" onclick="confirmPlay()">بله، ادامه بده</button>
+        <button class="btn-cancel" onclick="cancelPlay()">خیر، منصرف شدم</button>
       </div>
     </div>
   </div>
-</section>
 
-<section class="faq" id="faq">
-  <h2>سوالات متداول</h2>
-  <div class="faq-item">
-    <h3>چطور وقت مشاوره بگیرم؟</h3>
-    <p>از طریق تماس یا واتساپ در پایین سایت.</p>
-  </div>
-  <div class="faq-item">
-    <h3>مشاوره به چه شکل برگزار می‌شود؟</h3>
-    <p>به صورت حضوری یا آنلاین بر اساس انتخاب شما.</p>
-  </div>
-</section>
+  <script>
+    // کنترل منو موبایل
+    function toggleMenu() {
+      document.querySelector('nav ul').classList.toggle('show');
+    }
 
-<footer>
-  <p>تماس: 0936‑276‑5573 | ایمیل: info@betterversion.ir</p>
-  <p>© ۱۴۰۴ نسخه بهتر – تمامی حقوق محفوظ است</p>
-</footer>
+    // فایل‌های صوتی
+    const sounds = [
+      'voice_1404_5_16_13-28-39.mp3',
+      'voice_1404_5_16_13-28.mp3',
+      'voice_1404_5_16_13.mp3',
+      'voice_1404_5_16.mp3'
+    ];
 
-<script>
-  function toggleMenu() {
-    document.querySelector('nav ul').classList.toggle('show');
-  }
-</script>
+    let currentAudio = null; // صدای فعلی
+    let pendingPlay = null;  // تابع برای پخش بعد از تایید
 
+    // تابع درخواست پخش موزیک با چک کردن موزیک در حال پخش
+    function requestPlaySound() {
+      if (currentAudio && !currentAudio.paused) {
+        // اگر موزیک داره پخش میشه، مودال تایید رو باز کن
+        pendingPlay = playRandomSound;
+        document.getElementById('confirmModal').classList.add('active');
+      } else {
+        playRandomSound();
+      }
+    }
+
+    // تایید کاربر برای توقف موزیک قبلی و پخش جدید
+    function confirmPlay() {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+      if (pendingPlay) {
+        pendingPlay();
+        pendingPlay = null;
+      }
+      document.getElementById('confirmModal').classList.remove('active');
+    }
+
+    // انصراف کاربر
+    function cancelPlay() {
+      pendingPlay = null;
+      document.getElementById('confirmModal').classList.remove('active');
+    }
+
+    // پخش موزیک رندوم
+    function playRandomSound() {
+      const random = sounds[Math.floor(Math.random() * sounds.length)];
+      currentAudio = new Audio(random);
+      currentAudio.play();
+    }
+  </script>
 </body>
 </html>
