@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>نسخه بهتر – لیلا منفرد</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1423C9;
+      --accent: #F5D740;
+      --bg: #f9fafc;
+      --text: #222;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width .3s;
+    }
+    nav a:hover::after { width: 100%; }
+
+    .btn-login {
+      background: var(--accent);
+      color: var(--primary);
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--primary) 0%, #3B272B 100%);
+      color: white;
+      margin: 30px 12px;
+      border-radius: 30px 60px 30px 60px;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .banner h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .banner p {
+      font-size: 1.2rem;
+      opacity: 0.95;
+    }
+
+    .features {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .cards {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    .card {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 40px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+    }
+
+    .card .info {
+      padding: 15px;
+    }
+
+    .card .title {
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .card .price {
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .card button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .faq {
+      background: #eef2ff;
+      padding: 50px 20px;
+    }
+
+    .faq h2 {
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .faq-item {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 30px 60px 30px 60px;
+      padding: 20px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .faq-item h3 {
+      font-size: 1.1rem;
+      color: var(--primary);
+    }
+
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    footer p { margin-bottom: 5px; }
+
+    /* موبایل */
+    @media(max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav ul {
+        display: none;
+        position: fixed;
+        top: 60px;
+        right: 0;
+        width: 260px;
+        height: calc(100% - 60px);
+        background: white;
+        flex-direction: column;
+        padding: 30px 20px;
+        box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        transition: transform 0.3s ease;
+        transform: translateX(100%);
+        z-index: 999;
+      }
+
+      nav ul.show {
+        display: flex;
+        transform: translateX(0%);
+      }
+
+      nav ul li {
+        margin-bottom: 15px;
+      }
+
+      nav ul li a {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: var(--primary);
+      }
+
+      .close-menu {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: var(--primary);
+        align-self: flex-end;
+        margin-bottom: 20px;
+        cursor: pointer;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+    <span style="margin-right: 10px;">نسخه بهتر</span>
+  </div>
+  <nav>
+    <ul>
+      <li class="close-menu" onclick="toggleMenu()">✕</li>
+      <li><a href="#">خانه</a></li>
+      <li><a href="#">خدمات</a></li>
+      <li><a href="#">مقالات</a></li>
+      <li><a href="#faq">سوالات متداول</a></li>
+      <li><a href="#">تماس با ما</a></li>
+    </ul>
+  </nav>
+  <a href="#" class="btn-login">ورود / ثبت‌نام</a>
+</header>
+
+<section class="banner">
+  <h1>A Professional Consultant For Your Success</h1>
+  <p>با مدیریت خانم لیلا منفرد</p>
+</section>
+
+<section class="features">
+  <div class="cards">
+    <div class="card">
+      <img src="Baner.png" alt="مشاوره شخصی">
+      <div class="info">
+        <p class="title">مشاوره فردی و شخصی‌سازی‌شده</p>
+        <p class="price">با برنامه دقیق</p>
+        <button>اطلاعات بیشتر</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="Baner.png" alt="دوره آموزشی">
+      <div class="info">
+        <p class="title">برگزاری دوره‌های کاربردی</p>
+        <p class="price">آنلاین و حضوری</p>
+        <button>شروع یادگیری</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="Baner.png" alt="پشتیبانی">
+      <div class="info">
+        <p class="title">پشتیبانی دائمی</p>
+        <p class="price">تا رسیدن به هدف</p>
+        <button>در تماس باشید</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="Baner.png" alt="تحلیل روان‌شناسی">
+      <div class="info">
+        <p class="title">تحلیل شخصیت شما</p>
+        <p class="price">کاملاً تخصصی</p>
+        <button>شروع تحلیل</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <h2>سوالات متداول</h2>
+  <div class="faq-item">
+    <h3>چطور وقت مشاوره بگیرم؟</h3>
+    <p>از طریق تماس یا واتساپ در پایین سایت.</p>
+  </div>
+  <div class="faq-item">
+    <h3>مشاوره به چه شکل برگزار می‌شود؟</h3>
+    <p>به صورت حضوری یا آنلاین بر اساس انتخاب شما.</p>
+  </div>
+</section>
+
+<footer>
+  <p>تماس: 0936‑276‑5573 | ایمیل: info@betterversion.ir</p>
+  <p>© ۱۴۰۴ نسخه بهتر – تمامی حقوق محفوظ است</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.querySelector('nav ul').classList.toggle('show');
+  }
+</script>
+
+</body>
+</html>
