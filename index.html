@@ -86,6 +86,7 @@
       font-weight: 600;
       text-decoration: none;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
     }
     .banner {
       background: linear-gradient(135deg, var(--primary) 0%, #3B272B 100%);
@@ -119,30 +120,52 @@
       border-radius: 40px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
       overflow: hidden;
-      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 320px;
+      transition: transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
     }
     .card:hover {
       transform: translateY(-5px);
     }
     .card img {
       width: 100%;
-      height: 100px;
+      height: 120px;
       object-fit: cover;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
     }
     .card .info {
       padding: 15px;
+      text-align: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .card .title {
       font-weight: 700;
-      margin-bottom: 8px;
-      font-size: 1rem;
+      margin-bottom: 6px;
+      font-size: 1.1rem;
+      color: var(--primary);
     }
     .card .price {
       color: var(--accent);
       font-weight: 600;
-      margin-bottom: 12px;
+      margin-bottom: 10px; /* کمتر شد */
+      font-size: 1rem;
     }
-    .card button {
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      padding-bottom: 15px;
+    }
+    button.main-btn {
       background: var(--primary);
       color: white;
       border: none;
@@ -150,16 +173,40 @@
       border-radius: 30px;
       cursor: pointer;
       font-weight: bold;
+      white-space: nowrap;
+      transition: background 0.3s ease;
+    }
+    button.main-btn:hover {
+      background: #0f1a7a;
+    }
+    button.stop-btn {
+      background: transparent;
+      border: none;
+      color: var(--primary);
+      font-size: 22px;
+      cursor: pointer;
+      user-select: none;
+      padding: 0 8px;
+      transition: color 0.3s ease;
+      display: none; /* پیش‌فرض مخفی */
+    }
+    button.stop-btn:hover {
+      color: #0f1a7a;
+    }
+    .card.active button.stop-btn {
+      display: inline-block;
     }
     .faq {
       background: #eef2ff;
       padding: 50px 20px;
     }
     .faq h2 {
-      font-size: 1.6rem;
-      color: var(--primary);
-      margin-bottom: 20px;
-    }
+  font-size: 1.6rem;
+  color: var(--primary);
+  margin-bottom: 20px;
+  text-align: center; /* 👈 این خط اضافه شد */
+}
+
     .faq-item {
       background: white;
       border: 1px solid rgba(0, 0, 0, 0.08);
@@ -167,6 +214,11 @@
       padding: 20px;
       margin-bottom: 10px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+     /* متن سوال و پاسخ وسط‌چین شد */
+    .faq-item h3,
+    .faq-item p {
+      text-align: center;
     }
     .faq-item h3 {
       font-size: 1.1rem;
@@ -204,7 +256,6 @@
         transform: translateX(0%);
       }
     }
-
     /* مودال */
     #confirmModal {
       position: fixed;
@@ -307,12 +358,12 @@
         <li><a href="#">تماس با ما</a></li>
       </ul>
     </nav>
-    <a href="#" class="btn-login">ورود / ثبت‌نام</a>
+    <a href="login.html" class="btn-login" id="loginBtn">ورود / ثبت‌نام</a>
   </header>
 
   <section class="banner">
     <h1>A Professional Consultant For Your Success</h1>
-    <p>با مدیریت خانم لیلا منفرد</p>
+    <p>با مدیریت لیلا منفرد</p>
   </section>
 
   <section class="features">
@@ -322,7 +373,10 @@
         <div class="info">
           <p class="title">مشاوره فردی و شخصی‌سازی‌شده</p>
           <p class="price">با برنامه دقیق</p>
-          <button onclick="requestPlaySound()">اطلاعات بیشتر</button>
+          <div class="btn-container">
+            <button class="main-btn">اطلاعات بیشتر</button>
+            <button class="stop-btn" title="توقف پخش موزیک">⏹️</button>
+          </div>
         </div>
       </div>
       <div class="card">
@@ -330,7 +384,10 @@
         <div class="info">
           <p class="title">برگزاری دوره‌های کاربردی</p>
           <p class="price">آنلاین و حضوری</p>
-          <button onclick="requestPlaySound()">شروع یادگیری</button>
+          <div class="btn-container">
+            <button class="main-btn">شروع یادگیری</button>
+            <button class="stop-btn" title="توقف پخش موزیک">⏹️</button>
+          </div>
         </div>
       </div>
       <div class="card">
@@ -338,7 +395,10 @@
         <div class="info">
           <p class="title">پشتیبانی دائمی</p>
           <p class="price">تا رسیدن به هدف</p>
-          <button onclick="requestPlaySound()">در تماس باشید</button>
+          <div class="btn-container">
+            <button class="main-btn">در تماس باشید</button>
+            <button class="stop-btn" title="توقف پخش موزیک">⏹️</button>
+          </div>
         </div>
       </div>
       <div class="card">
@@ -346,7 +406,10 @@
         <div class="info">
           <p class="title">تحلیل شخصیت شما</p>
           <p class="price">کاملاً تخصصی</p>
-          <button onclick="requestPlaySound()">شروع تحلیل</button>
+          <div class="btn-container">
+            <button class="main-btn">شروع تحلیل</button>
+            <button class="stop-btn" title="توقف پخش موزیک">⏹️</button>
+          </div>
         </div>
       </div>
     </div>
@@ -356,16 +419,17 @@
     <h2>سوالات متداول</h2>
     <div class="faq-item">
       <h3>چطور وقت مشاوره بگیرم؟</h3>
-      <p>از طریق تماس یا واتساپ در پایین سایت.</p>
+      <p>جهت دریافت مشاوره به این آیدی پیام ارسال کنید 
+@leila_mobfared</p>
     </div>
     <div class="faq-item">
       <h3>مشاوره به چه شکل برگزار می‌شود؟</h3>
-      <p>به صورت حضوری یا آنلاین بر اساس انتخاب شما.</p>
+      <p>به صورت تماس تلفنی</p>
     </div>
   </section>
 
   <footer>
-    <p>تماس: 0936‑276‑5573 | ایمیل: info@betterversion.ir</p>
+    <p>آیدی ایتا: @leila_mobfared | ایمیل: info@betterversion.ir</p>
     <p>© ۱۴۰۴ نسخه بهتر – تمامی حقوق محفوظ است</p>
   </footer>
 
@@ -387,7 +451,6 @@
       document.querySelector('nav ul').classList.toggle('show');
     }
 
-    // فایل‌های صوتی
     const sounds = [
       'voice_1404_5_16_13-28-39.mp3',
       'voice_1404_5_16_13-28.mp3',
@@ -395,45 +458,99 @@
       'voice_1404_5_16.mp3'
     ];
 
-    let currentAudio = null; // صدای فعلی
-    let pendingPlay = null;  // تابع برای پخش بعد از تایید
+    let currentAudio = null;
+    let activeCard = null;
+    let pendingPlay = null;
+    let pendingCard = null;
 
-    // تابع درخواست پخش موزیک با چک کردن موزیک در حال پخش
-    function requestPlaySound() {
-      if (currentAudio && !currentAudio.paused) {
-        // اگر موزیک داره پخش میشه، مودال تایید رو باز کن
-        pendingPlay = playRandomSound;
+    // تابع پخش موزیک برای کارت مشخص
+    function playSoundForCard(card) {
+      if (currentAudio && !currentAudio.paused && card !== activeCard) {
+        pendingPlay = () => playSoundForCard(card);
         document.getElementById('confirmModal').classList.add('active');
-      } else {
-        playRandomSound();
+        pendingCard = card;
+        return;
+      }
+
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+      }
+
+      if (activeCard) {
+        activeCard.classList.remove('active');
+      }
+
+      activeCard = card;
+      activeCard.classList.add('active');
+
+      const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
+      currentAudio = new Audio(randomSound);
+      currentAudio.play();
+    }
+
+    // توقف پخش و حذف کلاس فعال
+    function stopSound() {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+      }
+      if (activeCard) {
+        activeCard.classList.remove('active');
+        activeCard = null;
       }
     }
 
-    // تایید کاربر برای توقف موزیک قبلی و پخش جدید
+    // تایید ادامه پخش موزیک جدید بعد از تایید مودال
     function confirmPlay() {
       if (currentAudio) {
         currentAudio.pause();
         currentAudio.currentTime = 0;
+        currentAudio = null;
       }
       if (pendingPlay) {
         pendingPlay();
-        pendingPlay = null;
       }
+      pendingPlay = null;
+      pendingCard = null;
       document.getElementById('confirmModal').classList.remove('active');
     }
 
-    // انصراف کاربر
+    // لغو پخش موزیک جدید و بستن مودال
     function cancelPlay() {
       pendingPlay = null;
+      pendingCard = null;
       document.getElementById('confirmModal').classList.remove('active');
     }
 
-    // پخش موزیک رندوم
-    function playRandomSound() {
-      const random = sounds[Math.floor(Math.random() * sounds.length)];
-      currentAudio = new Audio(random);
-      currentAudio.play();
+    // دکمه ورود / ثبت نام با مخفی کردن دائمی بعد از کلیک
+    const loginBtn = document.getElementById('loginBtn');
+    if (localStorage.getItem('loginBtnClicked')) {
+      loginBtn.style.display = 'none';
     }
+    loginBtn.addEventListener('click', function() {
+      this.style.display = 'none';
+      localStorage.setItem('loginBtnClicked', 'true');
+    });
+
+    // اضافه کردن EventListener به دکمه‌ها
+    window.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        const btnPlay = card.querySelector('button.main-btn');
+        const btnStop = card.querySelector('button.stop-btn');
+
+        btnPlay.addEventListener('click', () => {
+          playSoundForCard(card);
+        });
+
+        btnStop.addEventListener('click', () => {
+          stopSound();
+        });
+      });
+    });
   </script>
 </body>
 </html>
