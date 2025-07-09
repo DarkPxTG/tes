@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>ثبت نام و ورود – نسخه بهتر</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #1423C9;
+      --accent: #F5D740;
+      --bg: #f9fafc;
+      --text: #222;
+      --placeholder: rgba(34, 34, 34, 0.5);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      padding: 40px 15px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .container {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 8px 25px rgba(20,35,201,0.15);
+      width: 100%;
+      max-width: 450px;
+      padding: 30px 25px 40px;
+    }
+    h2 {
+      color: var(--primary);
+      font-weight: 800;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 15px;
+      border-radius: 15px;
+      border: 1.8px solid rgba(20,35,201,0.3);
+      margin-bottom: 18px;
+      font-size: 1rem;
+      outline-color: var(--primary);
+      transition: border-color 0.3s ease;
+      color: var(--text);
+    }
+    input[type="text"]::placeholder,
+    input[type="number"]::placeholder,
+    input[type="password"]::placeholder {
+      color: var(--placeholder);
+    }
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    input[type="password"]:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 8px rgba(20,35,201,0.3);
+      color: var(--text);
+    }
+    button {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      padding: 12px 0;
+      font-weight: 800;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    button:hover {
+      background: #0f1a7a;
+    }
+    .toggle-text {
+      text-align: center;
+      margin-top: 18px;
+      color: var(--primary);
+      cursor: pointer;
+      font-weight: 600;
+      user-select: none;
+      font-size: 0.95rem;
+    }
+    .message {
+      margin-top: 15px;
+      font-weight: 700;
+      text-align: center;
+      border-radius: 18px;
+      padding: 8px 10px;
+    }
+    .message.error {
+      background: #f8d7da;
+      color: #842029;
+      border: 1.5px solid #f5c2c7;
+    }
+    .message.success {
+      background: #d1e7dd;
+      color: #0f5132;
+      border: 1.5px solid #badbcc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="registerForm">
+    <h2>ثبت نام</h2>
+    <input type="text" id="name" placeholder="نام و نام خانوادگی" />
+    <input type="number" id="age" placeholder="سن" min="1" />
+    <input type="text" id="education" placeholder="تحصیلات و رشته تحصیلی" />
+    <input type="text" id="job" placeholder="شغل فعلی و حدود درآمد" />
+    <input type="text" id="city" placeholder="شهر محل سکونت" />
+    <input type="text" id="phone" placeholder="شماره تماس" />
+    <input type="password" id="password" placeholder="رمز عبور" />
+    <button onclick="registerUser()">ثبت نام</button>
+    <div class="message" id="registerMessage"></div>
+    <div class="toggle-text" onclick="showLogin()">قبلاً ثبت نام کرده‌اید؟ ورود</div>
+  </div>
+
+  <div class="container" id="loginForm" style="display:none;">
+    <h2>ورود</h2>
+    <input type="text" id="loginPhone" placeholder="شماره تماس" />
+    <input type="password" id="loginPassword" placeholder="رمز عبور" />
+    <button onclick="loginUser()">ورود</button>
+    <div class="message" id="loginMessage"></div>
+    <div class="toggle-text" onclick="showRegister()">حساب ندارید؟ ثبت نام</div>
+  </div>
+
+  <script>
+    function showLogin() {
+      document.getElementById('registerForm').style.display = 'none';
+      document.getElementById('loginForm').style.display = 'block';
+      clearMessages();
+    }
+    function showRegister() {
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('registerForm').style.display = 'block';
+      clearMessages();
+    }
+    function clearMessages() {
+      document.getElementById('registerMessage').textContent = '';
+      document.getElementById('loginMessage').textContent = '';
+    }
+
+    function registerUser() {
+      const name = document.getElementById('name').value.trim();
+      const age = document.getElementById('age').value.trim();
+      const education = document.getElementById('education').value.trim();
+      const job = document.getElementById('job').value.trim();
+      const city = document.getElementById('city').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const message = document.getElementById('registerMessage');
+
+      if (!name || !age || !education || !job || !city || !phone || !password) {
+        message.className = 'message error';
+        message.textContent = 'لطفاً همه فیلدها را پر کنید.';
+        return;
+      }
+
+      let users = JSON.parse(localStorage.getItem('users')) || [];
+      if(users.find(u => u.phone === phone)) {
+        message.className = 'message error';
+        message.textContent = 'شما قبلاً با این شماره ثبت نام کرده‌اید.';
+        return;
+      }
+
+      users.push({ name, age, education, job, city, phone, password });
+      localStorage.setItem('users', JSON.stringify(users));
+
+      message.className = 'message success';
+      message.textContent = 'ثبت نام با موفقیت انجام شد. اکنون می‌توانید وارد شوید.';
+      clearRegisterForm();
+    }
+
+    function clearRegisterForm() {
+      document.getElementById('name').value = '';
+      document.getElementById('age').value = '';
+      document.getElementById('education').value = '';
+      document.getElementById('job').value = '';
+      document.getElementById('city').value = '';
+      document.getElementById('phone').value = '';
+      document.getElementById('password').value = '';
+    }
+
+    function loginUser() {
+      const phone = document.getElementById('loginPhone').value.trim();
+      const password = document.getElementById('loginPassword').value.trim();
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      const message = document.getElementById('loginMessage');
+
+      const found = users.find(u => u.phone === phone && u.password === password);
+      if(found) {
+        message.className = 'message success';
+        message.textContent = '✅ خوش آمدید ' + found.name + '!';
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1000);
+      } else {
+        message.className = 'message error';
+        message.textContent = '❌ شماره یا رمز اشتباه است یا حساب وجود ندارد.';
+      }
+    }
+  </script>
+
+</body>
+</html>
